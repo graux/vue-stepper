@@ -15,7 +15,7 @@
                          :style="{width: `${100 / steps.length}%`}">
                         <div class="circle">
                             <span class="icon is-large">
-                                <i :class="'fa fa-3x '+(step.completed ? 'fa-check' : step.icon)"></i>
+                                <i :class="'fa fa-2x '+(step.completed ? 'fa-check' : step.icon)"></i>
                             </span>
                         </div>
                         <div class="step-title">
