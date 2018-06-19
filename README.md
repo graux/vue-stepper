@@ -1,5 +1,7 @@
 #   Stepper [![Build Status](https://travis-ci.org/PygmySlowLoris/vue-stepper.svg?branch=master)](https://travis-ci.org/PygmySlowLoris/vue-stepper)
 
+Forked version to support Bulma & FontAwesome 4.7 Icons
+
 <p align="center">
 <img src="https://media.giphy.com/media/26Fff0ZKP893tSJ5m/giphy.gif" />
 </p>
@@ -30,7 +32,7 @@ npm install vue-stepper --save
 
 | Properties            | Type      | Values     |
 | :---------------      | :-------  | :--------- |
-|  `icon`           | String    | Ex.: `mail`. Name of icons that belong to material-icons library |
+|  `icon`           | String    | Ex.: `fa-envelope`. Name of icons that belong to FontAwesome 4.7 library |
 |  `name`           | String    | Name of the step. Each step name **MUST** be unique |
 |  `title`           | String    | Title that will be displayed below the step, on bold. |
 |  `subtitle`           | String    | Subtitle displayed below the title. |
@@ -97,7 +99,7 @@ Script example
             return {
                 demoSteps: [
                     {
-                        icon: 'mail',
+                        icon: 'fa-envelope',
                         name: 'first',
                         title: 'Sample title 1',
                         subtitle: 'Subtitle sample',
@@ -106,7 +108,7 @@ Script example
 
                     },
                     {
-                        icon: 'report_problem',
+                        icon: 'fa-exclamation-triangle',
                         name: 'second',
                         title: 'Sample title 2',
                         subtitle: 'Subtitle sample',

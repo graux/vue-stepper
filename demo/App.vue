@@ -65,76 +65,77 @@
 </template>
 
 <script>
-    import HorizontalStepper from '../src/HorizontalStepper.vue';
+import HorizontalStepper from '../src/HorizontalStepper.vue'
 
-    import StepOne from './StepOne.vue';
-    import StepTwo from './StepTwo.vue';
+import StepOne from './StepOne.vue'
+import StepTwo from './StepTwo.vue'
 
-    const teamUrl = 'https://github.com/PygmySlowLoris';
-    const repoUrl = 'https://github.com/PygmySlowLoris/vue-stepper';
+const teamUrl = 'https://github.com/PygmySlowLoris'
+const repoUrl = 'https://github.com/PygmySlowLoris/vue-stepper'
 
-    export default {
-        name: 'app',
-        components: {
-            HorizontalStepper
+export default {
+  name: 'app',
+  components: {
+    HorizontalStepper
+  },
+  data () {
+    return {
+      repoUrl: repoUrl,
+      teamUrl: teamUrl,
+      demoSteps: [
+        {
+          icon: 'fa-envelope',
+          name: 'first',
+          title: 'Sample title 1',
+          subtitle: 'Subtitle sample',
+          component: StepOne,
+          completed: false
+
         },
-        data(){
-            return {
-                repoUrl: repoUrl,
-                teamUrl: teamUrl,
-                demoSteps: [
-                    {
-                        icon: 'mail',
-                        name: 'first',
-                        title: 'Sample title 1',
-                        subtitle: 'Subtitle sample',
-                        component: StepOne,
-                        completed: false
+        {
 
-                    },
-                    {
-                        icon: 'report_problem',
-                        name: 'second',
-                        title: 'Sample title 2',
-                        subtitle: 'Subtitle sample',
-                        component: StepTwo,
-                        completed: false
-                    },
-                    {
-                        icon: 'announcement',
-                        name: 'third',
-                        title: 'Sample title 3',
-                        subtitle: 'Subtitle sample',
-                        component: StepOne,
-                        completed: false
-                    }
-                ],
-                activeStep: 0
-            }
+          icon: 'fa-exclamation-triangle',
+          name: 'second',
+          title: 'Sample title 2',
+          subtitle: 'Subtitle sample',
+          component: StepTwo,
+          completed: false
         },
-        computed: {},
-        methods: {
-            completeStep(payload) {
-                this.demoSteps.forEach((step) => {
-                    if (step.name === payload.name) {
-                        step.completed = true;
-                    }
-                })
-            },
-            isStepActive(payload) {
-                this.demoSteps.forEach((step) => {
-                    if (step.name === payload.name) {
-                        if(step.completed === true) {
-                            step.completed = false;
-                        }
-                    }
-                })
-            },
-            alert(payload) {
-                alert('end')
-            }
+        {
+          icon: 'fa-commenting',
+          name: 'third',
+          title: 'Sample title 3',
+          subtitle: 'Subtitle sample',
+          component: StepOne,
+          completed: false
         }
+      ],
+      activeStep: 0
     }
+  },
+  computed: {},
+  methods: {
+    completeStep (payload) {
+      this.demoSteps.forEach((step) => {
+        if (step.name === payload.name) {
+          step.completed = true
+        }
+      })
+    },
+    isStepActive (payload) {
+      this.demoSteps.forEach((step) => {
+        if (step.name === payload.name) {
+          if (step.completed === true) {
+            step.completed = false
+          }
+        }
+      })
+    },
+    alert (payload) {
+      alert('end')
+    }
+  }
+}
 </script>
 
 <style scoped>
