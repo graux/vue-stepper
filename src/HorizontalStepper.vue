@@ -1,5 +1,5 @@
 <template>
-    <div class="stepper-box">
+    <div class="stepper-box box">
         <div class="top">
             <div class="divider-line" :style="{width: `${(100/(steps.length) * (steps.length - 1)) - 10}%`}"></div>
             <div class="steps-wrapper">
@@ -38,11 +38,13 @@
                 <keep-alive v-if="keepAlive">
                     <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
                                @can-continue="proceed" @change-next="changeNextBtnValue"
+                               @data-update="onDataUpdate"
                                :current-step="currentStep"></component>
                 </keep-alive>
                 <!--If not show component and destroy it in each step change-->
                 <component v-else :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
                            @can-continue="proceed" @change-next="changeNextBtnValue"
+                           @data-update="onDataUpdate"
                            :current-step="currentStep"></component>
             </transition>
         </div>
@@ -135,6 +137,9 @@ export default {
   },
 
   methods: {
+    onDataUpdate (stepData) {
+      this.$emit('data-update', {step: currentStep, data: stepData})
+    },
     isStepActive (index, step) {
       if (this.currentStep.index === index) {
         return 'activated'
