@@ -38,13 +38,13 @@
                 <keep-alive v-if="keepAlive">
                     <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
                                @can-continue="proceed" @change-next="changeNextBtnValue"
-                               @data-update="onDataUpdate"
+                               @data-change="onDataUpdate"
                                :current-step="currentStep"></component>
                 </keep-alive>
                 <!--If not show component and destroy it in each step change-->
                 <component v-else :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
                            @can-continue="proceed" @change-next="changeNextBtnValue"
-                           @data-update="onDataUpdate"
+                           @data-change="onDataUpdate"
                            :current-step="currentStep"></component>
             </transition>
         </div>
@@ -137,9 +137,6 @@ export default {
   },
 
   methods: {
-    onDataUpdate (stepData) {
-      this.$emit('data-update', {step: currentStep, data: stepData})
-    },
     isStepActive (index, step) {
       if (this.currentStep.index === index) {
         return 'activated'
@@ -190,14 +187,16 @@ export default {
         this.activateStep(currentIndex, true)
       }
     },
-
     proceed (payload) {
       this.canContinue = payload.value
     },
-
     changeNextBtnValue (payload) {
       this.nextButton[this.currentStep.name] = payload.nextBtnValue
       this.$forceUpdate()
+    },
+    onDataUpdate (payload) {
+      console.log('PARENT On Data Update', payload)
+      // this.$emit('data-update', {step: this.currentStep, data: payload})
     }
   },
 
