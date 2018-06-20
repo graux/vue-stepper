@@ -195,8 +195,7 @@ export default {
       this.$forceUpdate()
     },
     onDataUpdate (payload) {
-      console.log('PARENT On Data Update', payload)
-      // this.$emit('data-update', {step: this.currentStep, data: payload})
+      this.$emit('data-update', {step: this.currentStep, data: payload})
     }
   },
 
