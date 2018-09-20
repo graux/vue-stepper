@@ -32,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="content">
+        <div class="content" :class="{'is-animated': animating}">
             <transition :enter-active-class="enterAnimation" :leave-active-class="leaveAnimation" mode="out-in">
                 <!--If keep alive-->
                 <keep-alive v-if="keepAlive">
@@ -116,7 +116,8 @@ export default {
       nextButton: {},
       canContinue: false,
       finalStep: false,
-      sharedData: []
+      sharedData: [],
+      animating: false
     }
   },
 
@@ -165,22 +166,22 @@ export default {
         }
       }
       this.$emit('active-step', this.currentStep)
+      const self = this
+      this.animating = true
+      window.setTimeout(() => {self.animating = false}, 2000)
     },
-
     nextStep () {
-      this.nextButton[this.currentStep.name] = true
-      if (this.canContinue) {
-        if (this.finalStep) {
-          this.$emit('stepper-finished', this.currentStep)
-        }
-        let currentIndex = this.currentStep.index + 1
-
-        this.activateStep(currentIndex)
+      if (!this.$listeners || !this.$listeners['before-next-step']) {
+        this.nextStepAction()
       }
       this.canContinue = false
-      this.$forceUpdate()
+      this.$emit('before-next-step', {currentStep: this.currentStep}, (next = true) => {
+        this.canContinue = true
+        if (next) {
+          this.nextStepAction()
+        }
+      })
     },
-
     backStep () {
       this.$emit('clicking-back')
       let currentIndex = this.currentStep.index - 1
