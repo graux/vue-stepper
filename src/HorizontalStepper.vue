@@ -170,6 +170,20 @@ export default {
       this.animating = true
       window.setTimeout(() => {self.animating = false}, 2000)
     },
+
+    nextStepAction () {
+      this.nextButton[this.currentStep.name] = true
+      if (this.canContinue) {
+        if (this.finalStep) {
+          this.$emit('stepper-finished', this.currentStep)
+        }
+        let currentIndex = this.currentStep.index + 1
+        this.activateStep(currentIndex)
+      }
+      this.canContinue = false
+      this.$forceUpdate()
+    },
+
     nextStep () {
       if (!this.$listeners || !this.$listeners['before-next-step']) {
         this.nextStepAction()
