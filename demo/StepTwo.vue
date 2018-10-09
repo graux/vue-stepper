@@ -6,7 +6,7 @@
             </p>
             <a href="#" class="card-header-icon" aria-label="more options">
               <span class="icon">
-                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  <font-awesome-icon icon="angle-down"/>
               </span>
             </a>
         </header>
@@ -27,17 +27,17 @@
 </template>
 
 <script>
-    export default {
-        props: ['currentStep'],
+export default {
+  props: ['currentStep'],
 
-        methods: {
-          canContinue() {
-              this.$emit('can-continue', {value: true});
-          }
-        },
-
-        mounted() {
-//            this.$emit('can-continue', {value: true})
-        }
+  methods: {
+    canContinue () {
+      this.$emit('can-continue', {value: true})
     }
+  },
+
+  mounted () {
+//            this.$emit('can-continue', {value: true})
+  }
+}
 </script>

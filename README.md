@@ -32,7 +32,7 @@ npm install vue-stepper --save
 
 | Properties            | Type      | Values     |
 | :---------------      | :-------  | :--------- |
-|  `icon`           | String    | Ex.: `fa-envelope`. Name of icons that belong to FontAwesome 4.7 library |
+|  `icon`           | String \ Array    | Ex.: `envelope`. Name of icons that belong to FontAwesome 5.x library |
 |  `name`           | String    | Name of the step. Each step name **MUST** be unique |
 |  `title`           | String    | Title that will be displayed below the step, on bold. |
 |  `subtitle`           | String    | Subtitle displayed below the title. |

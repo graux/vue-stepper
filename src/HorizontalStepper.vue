@@ -6,7 +6,7 @@
                 <template v-if="topButtons">
                     <div v-if="currentStep.index > 0" class="stepper-button-top previous" @click="backStep()">
                         <span class="icon">
-                            <i class="fa fa-arrow-left"></i>
+                            <font-awesome-icon icon="arrow-left"/>
                         </span>
                     </div>
                 </template>
@@ -15,7 +15,7 @@
                          :style="{width: `${100 / steps.length}%`}">
                         <div class="circle">
                             <span class="icon is-large">
-                                <i :class="'fa fa-2x '+(step.completed ? 'fa-check' : step.icon)"></i>
+                                <font-awesome-icon :icon="step.completed ? 'check' : step.icon" size="2x"/>
                             </span>
                         </div>
                         <div class="step-title">
@@ -27,7 +27,7 @@
                 <div v-if="topButtons" :class="['stepper-button-top next', !canContinue ? 'deactivated' : '']"
                      @click="nextStep()">
                     <span class="icon">
-                        <i class="fa fa-arrow-right"></i>
+                        <font-awesome-icon icon="arrow-right"/>
                     </span>
                 </div>
             </div>
@@ -51,14 +51,14 @@
         <div :class="['bottom', (currentStep.index > 0) ? '' : 'only-next']">
             <div v-if="currentStep.index > 0" class="button previous" @click="backStep()">
                 <span class="icon">
-                    <i class="fa fa-arrow-left"></i>
+                    <font-awesome-icon icon="arrow-left"/>
                 </span>
                 <span>{{ 'back' | translate(locale) }}</span>
             </div>
             <div :class="['button next', !canContinue ? 'deactivated' : '']" @click="nextStep()">
                 <span>{{ (finalStep) ? 'finish' : 'next' | translate(locale) }}</span>
                 <span class="icon">
-                    <i class="fa fa-arrow-right"></i>
+                    <font-awesome-icon icon="arrow-right"/>
                 </span>
             </div>
         </div>
@@ -67,6 +67,21 @@
 
 <script>
 import translations from './Translations.js'
+import { library } from '@fortawesome/fontawesome-svg-core'
+
+import {
+  faArrowLeft,
+  faArrowRight,
+  faCheck,
+  faAngleDown
+} from '@fortawesome/free-solid-svg-icons'
+
+library.add(
+  faArrowLeft,
+  faArrowRight,
+  faCheck,
+  faAngleDown
+)
 
 export default {
   filters: {
@@ -89,13 +104,13 @@ export default {
       default: function () {
         return [
           {
-            icon: 'fa-envelope',
+            icon: 'envelope',
             name: 'first',
             title: 'Sample title 1',
             subtitle: 'Subtitle sample'
           },
           {
-            icon: 'fa-exclamation-triangle',
+            icon: 'exclamation-triangle',
             name: 'second',
             title: 'Sample title 2',
             subtitle: 'Subtitle sample'

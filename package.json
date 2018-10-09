@@ -35,8 +35,7 @@
   },
   "dependencies": {
     "npm": "^5.10.0",
-    "vue": "^2.5.16",
-    "font-awesome": "^4.7.0"
+    "vue": "^2.5.16"
   },
   "jest": {
     "moduleFileExtensions": [

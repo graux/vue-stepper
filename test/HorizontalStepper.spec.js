@@ -15,7 +15,7 @@ describe('HorizontalStepper.spec.js', () => {
       propsData: {
         steps: [
           {
-            icon: 'fa-envelope',
+            icon: 'envelope',
             name: 'first',
             title: 'Sample title 1',
             subtitle: 'Subtitle sample',
@@ -23,7 +23,7 @@ describe('HorizontalStepper.spec.js', () => {
             completed: false
           },
           {
-            icon: 'fa-envelope',
+            icon: 'envelope',
             name: 'second',
             title: 'Sample title 1',
             subtitle: 'Subtitle sample',

@@ -84,7 +84,7 @@ export default {
       teamUrl: teamUrl,
       demoSteps: [
         {
-          icon: 'fa-envelope',
+          icon: 'envelope',
           name: 'first',
           title: 'Sample title 1',
           subtitle: 'Subtitle sample',
@@ -94,7 +94,7 @@ export default {
         },
         {
 
-          icon: 'fa-exclamation-triangle',
+          icon: 'exclamation-triangle',
           name: 'second',
           title: 'Sample title 2',
           subtitle: 'Subtitle sample',
@@ -102,7 +102,7 @@ export default {
           completed: false
         },
         {
-          icon: 'fa-commenting',
+          icon: 'commenting',
           name: 'third',
           title: 'Sample title 3',
           subtitle: 'Subtitle sample',
