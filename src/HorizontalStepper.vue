@@ -1,68 +1,68 @@
 <template>
-    <div class="stepper-box box">
-        <div class="top">
-            <div class="divider-line" :style="{width: `${(100/(steps.length) * (steps.length - 1)) - 10}%`}"></div>
-            <div class="steps-wrapper">
-                <template v-if="topButtons">
-                    <div v-if="currentStep.index > 0" class="stepper-button-top previous" @click="backStep()">
+  <div class="stepper-box box">
+    <div class="top">
+      <div class="divider-line" :style="{width: `${(100/(steps.length) * (steps.length - 1)) - 10}%`}"></div>
+      <div class="steps-wrapper">
+        <template v-if="topButtons">
+          <div v-if="currentStep.index > 0" class="stepper-button-top previous" @click="backStep()">
                         <span class="icon">
-                            <font-awesome-icon icon="arrow-left"/>
+                            <font-awesome-icon icon="arrow-left" />
                         </span>
-                    </div>
-                </template>
-                <template v-for="(step, index) in steps">
-                    <div :class="['step', isStepActive(index, step)]" :key="index"
-                         :style="{width: `${100 / steps.length}%`}">
-                        <div class="circle">
+          </div>
+        </template>
+        <template v-for="(step, index) in steps">
+          <div :class="['step', isStepActive(index, step)]" :key="index"
+               :style="{width: `${100 / steps.length}%`}">
+            <div class="circle">
                             <span class="icon is-large">
-                                <font-awesome-icon :icon="step.completed ? 'check' : step.icon" size="2x"/>
+                                <font-awesome-icon :icon="step.completed ? 'check' : step.icon" size="2x" />
                             </span>
-                        </div>
-                        <div class="step-title">
-                            <h4>{{step.title}}</h4>
-                            <h5 class="step-subtitle">{{step.subtitle}}</h5>
-                        </div>
-                    </div>
-                </template>
-                <div v-if="topButtons" :class="['stepper-button-top next', !canContinue ? 'deactivated' : '']"
-                     @click="nextStep()">
+            </div>
+            <div class="step-title">
+              <h4>{{step.title}}</h4>
+              <h5 class="step-subtitle">{{step.subtitle}}</h5>
+            </div>
+          </div>
+        </template>
+        <div v-if="topButtons" :class="['stepper-button-top next', !canContinue ? 'deactivated' : '']"
+             @click="nextStep()">
                     <span class="icon">
-                        <font-awesome-icon icon="arrow-right"/>
+                        <font-awesome-icon icon="arrow-right" />
                     </span>
-                </div>
-            </div>
         </div>
-        <div class="content" :class="{'is-animated': animating}">
-            <transition :enter-active-class="enterAnimation" :leave-active-class="leaveAnimation" mode="out-in">
-                <!--If keep alive-->
-                <keep-alive v-if="keepAlive">
-                    <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
-                               @can-continue="proceed" @change-next="changeNextBtnValue" @next="nextStep" @back="backStep"
-                               @data-change="onDataUpdate" :sharedData="sharedData"
-                               :current-step="currentStep"></component>
-                </keep-alive>
-                <!--If not show component and destroy it in each step change-->
-                <component v-else :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
-                           @can-continue="proceed" @change-next="changeNextBtnValue" @next="nextStep" @back="backStep"
-                           @data-change="onDataUpdate" :sharedData="sharedData"
-                           :current-step="currentStep"></component>
-            </transition>
-        </div>
-        <div :class="['bottom', (currentStep.index > 0) ? '' : 'only-next']">
-            <div v-if="currentStep.index > 0" class="button previous" @click="backStep()">
-                <span class="icon">
-                    <font-awesome-icon icon="arrow-left"/>
-                </span>
-                <span>{{ 'back' | translate(locale) }}</span>
-            </div>
-            <div :class="['button next', !canContinue ? 'deactivated' : '']" @click="nextStep()">
-                <span>{{ (finalStep) ? 'finish' : 'next' | translate(locale) }}</span>
-                <span class="icon">
-                    <font-awesome-icon icon="arrow-right"/>
-                </span>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="content" :class="{'is-animated': animating}">
+      <transition :enter-active-class="enterAnimation" :leave-active-class="leaveAnimation" mode="out-in">
+        <!--If keep alive-->
+        <keep-alive v-if="keepAlive">
+          <component :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
+                     @can-continue="proceed" @change-next="changeNextBtnValue" @next="nextStep" @back="backStep"
+                     @data-change="onDataUpdate" :sharedData="sharedData"
+                     :current-step="currentStep"></component>
+        </keep-alive>
+        <!--If not show component and destroy it in each step change-->
+        <component v-else :is="steps[currentStep.index].component" :clickedNext="nextButton[currentStep.name]"
+                   @can-continue="proceed" @change-next="changeNextBtnValue" @next="nextStep" @back="backStep"
+                   @data-change="onDataUpdate" :sharedData="sharedData"
+                   :current-step="currentStep"></component>
+      </transition>
+    </div>
+    <div :class="['bottom', (currentStep.index > 0) ? '' : 'only-next']">
+      <div v-if="currentStep.index > 0" class="button previous" @click="backStep()">
+                <span class="icon">
+                    <font-awesome-icon icon="arrow-left" />
+                </span>
+        <span>{{ 'back' | translate(locale) }}</span>
+      </div>
+      <div :class="['button next', !canContinue ? 'deactivated' : '']" @click="nextStep()">
+        <span>{{ (finalStep) ? 'finish' : 'next' | translate(locale) }}</span>
+        <span class="icon">
+                    <font-awesome-icon icon="arrow-right" />
+                </span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -204,7 +204,7 @@ export default {
         this.nextStepAction()
       }
       this.canContinue = false
-      this.$emit('before-next-step', {currentStep: this.currentStep}, (next = true) => {
+      this.$emit('before-next-step', { currentStep: this.currentStep }, (next = true) => {
         this.canContinue = true
         if (next) {
           this.nextStepAction()
@@ -227,7 +227,7 @@ export default {
     },
     onDataUpdate (payload) {
       this.sharedData[this.currentStep.index] = payload
-      this.$emit('data-update', {step: this.currentStep, data: payload})
+      this.$emit('data-update', { step: this.currentStep, data: payload })
     }
   },
 

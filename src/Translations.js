@@ -9,6 +9,16 @@ export default {
     back: 'Atrás',
     finish: 'Finalizar'
   },
+  fr: {
+    next: 'Suivant',
+    back: 'Précédent',
+    finish: 'Fin'
+  },
+  de: {
+    next: 'Weiter',
+    back: 'Zurück',
+    finish: 'Fertig'
+  },
   ca: {
     next: 'Següent',
     back: 'Enrere',
