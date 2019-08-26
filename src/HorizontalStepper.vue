@@ -99,6 +99,7 @@ export default {
       type: Boolean,
       default: false
     },
+    settings: { type: Object, default: null },
     steps: {
       type: Array,
       default: function () {
